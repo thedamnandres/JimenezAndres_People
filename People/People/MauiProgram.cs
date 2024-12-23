@@ -14,7 +14,10 @@ public static class MauiProgram
 			});
 
 		// TODO: Add statements for adding PersonRepository as a singleton
-			
+		string andresjimenezdbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "andresjimenez_people.db");
+		builder.Services.AddSingleton<PersonRepository>(s =>
+			ActivatorUtilities.CreateInstance<PersonRepository>(s, andresjimenezdbPath));
+		
         return builder.Build();
 	}
 }

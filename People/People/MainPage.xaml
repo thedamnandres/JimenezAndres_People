@@ -7,14 +7,14 @@
     <Grid Padding="5" RowSpacing="5" ColumnSpacing="5"
           RowDefinitions="Auto,Auto,Auto,Auto,*">
 
-        <Entry x:Name="newPerson"
+        <Entry x:Name="AJnewPerson"
            Placeholder="Enter name" />
 
         <Button Text="Add Person"
             Grid.Row="1"
             Clicked="OnNewButtonClicked" />
 
-        <Label x:Name="statusMessage"
+        <Label x:Name="AJstatusMessage"
            TextColor="{StaticResource Primary}"
            Grid.Row="2" />
 
@@ -22,16 +22,18 @@
             Grid.Row="3"
             Clicked="OnGetButtonClicked" />
 
-        <CollectionView x:Name="peopleList" Grid.Row="4">
-            <CollectionView.ItemTemplate>
+        <ListView x:Name="AJpeopleList" Grid.Row="4" ItemTapped="OnItemTapped">
+            <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid ColumnDefinitions="*,2*">
-                        <Label Text="{Binding Id}" TextColor="{StaticResource Primary}"/>
-                        <Label Grid.Column="1" Text="{Binding Name}" TextColor="{StaticResource Primary}"/>
-                    </Grid>
+                    <ViewCell>
+                        <Grid ColumnDefinitions="*,2*">
+                            <Label Text="{Binding Id}" TextColor="{StaticResource Primary}"/>
+                            <Label Grid.Column="1" Text="{Binding Name}" TextColor="{StaticResource Primary}"/>
+                        </Grid>
+                    </ViewCell>
                 </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+            </ListView.ItemTemplate>
+        </ListView>
 
     </Grid>
 
