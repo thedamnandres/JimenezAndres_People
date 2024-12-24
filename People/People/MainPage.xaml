@@ -1,34 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="People.MainPage" 
-             BackgroundColor="{DynamicResource Light}">
+             x:Class="People.MainPage">
+    
+    <Shell.TitleView>
+        <Label Text="AJ_People"
+               FontFamily="Rainbow"
+               FontSize="24"
+               TextColor="Black"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
+    </Shell.TitleView>
 
     <Grid Padding="5" RowSpacing="5" ColumnSpacing="5"
-          RowDefinitions="Auto,Auto,Auto,Auto,*">
+          RowDefinitions="Auto,Auto,Auto,Auto,*" BackgroundColor="Black">
 
         <Entry x:Name="AJnewPerson"
            Placeholder="Enter name" />
 
-        <Button Text="Add Person"
+        <Button Text="Agregar Person"
             Grid.Row="1"
             Clicked="OnNewButtonClicked" />
 
         <Label x:Name="AJstatusMessage"
-           TextColor="{StaticResource Primary}"
+           TextColor="{StaticResource White}"
+           FontFamily="Rainbow"
            Grid.Row="2" />
 
-        <Button Text="Get All People"
+        <Button Text="Todas Las Personas"
             Grid.Row="3"
             Clicked="OnGetButtonClicked" />
 
-        <ListView x:Name="AJpeopleList" Grid.Row="4" ItemTapped="OnItemTapped">
+        <ListView x:Name="AJpeopleList" Grid.Row="4" ItemTapped="OnItemTapped" BackgroundColor="DimGray">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid ColumnDefinitions="*,2*">
-                            <Label Text="{Binding Id}" TextColor="{StaticResource Primary}"/>
-                            <Label Grid.Column="1" Text="{Binding Name}" TextColor="{StaticResource Primary}"/>
+                        <Grid ColumnDefinitions="*,2*" BackgroundColor="DimGray" Padding="12">
+                            <Label Text="{Binding Id}" FontSize="16" Margin="10,0,0,0" FontFamily="Rainbow"/>
+                            <Label Grid.Column="1" Text="{Binding Name}" FontSize="16" Margin="-15,0,0,0" FontFamily="Rainbow"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

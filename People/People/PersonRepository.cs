@@ -1,11 +1,12 @@
 ﻿using People.Models;
 using SQLite;
+using Font = Microsoft.Maui.Graphics.Font;
 
 namespace People;
 
 public class PersonRepository
 {
-    string _andresjimenezdbPath;
+    private string _andresjimenezdbPath;
 
     public string StatusMessage { get; set; }
 
@@ -23,9 +24,9 @@ public class PersonRepository
 
     public PersonRepository(string dbPath)
     {
-        _andresjimenezdbPath = dbPath;                        
+        _andresjimenezdbPath = dbPath;
     }
-
+    
     public void AddNewPerson(string name)
     {            
         int result = 0;
