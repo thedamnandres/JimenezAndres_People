@@ -37,16 +37,16 @@ public class PersonRepository
 
             // basic validation to ensure a name was entered
             if (string.IsNullOrEmpty(name))
-                throw new Exception("Valid name required");
+                throw new Exception("Nombre valido requerido");
 
             // TODO: Insert the new person into the database
             result = conn.Insert(new Person { Name = name });
 
-            StatusMessage = string.Format("{0} record(s) added (Name: {1})", result, name);
+            StatusMessage = string.Format("{0} persona agregada (Name: {1})", result, name);
         }
         catch (Exception ex)
         {
-            StatusMessage = string.Format("Failed to add {0}. Error: {1}", name, ex.Message);
+            StatusMessage = string.Format("Erro al agregar {0}. Error: {1}", name, ex.Message);
         }
 
     }
@@ -61,7 +61,7 @@ public class PersonRepository
         }
         catch (Exception ex)
         {
-            StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
+            StatusMessage = string.Format("Error al obtener los datos. {0}", ex.Message);
         }
 
         return new List<Person>();
@@ -76,12 +76,12 @@ public class PersonRepository
             if (person != null)
             {
                 conn.Delete(person);
-                StatusMessage = $"Record {id} deleted.";
+                StatusMessage = $"Persona {id} eliminada.";
             }
         }
         catch (Exception ex)
         {
-            StatusMessage = $"Failed to delete record {id}. Error: {ex.Message}";
+            StatusMessage = $"Error al eliminar a {id}. Error: {ex.Message}";
         }
     }
 }

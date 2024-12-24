@@ -13,10 +13,10 @@
     </Shell.TitleView>
 
     <Grid Padding="5" RowSpacing="5" ColumnSpacing="5"
-          RowDefinitions="Auto,Auto,Auto,Auto,*" BackgroundColor="Black">
+          RowDefinitions="Auto,Auto,Auto,Auto,Auto,*" BackgroundColor="Black">
 
         <Entry x:Name="AJnewPerson"
-           Placeholder="Enter name" />
+           Placeholder="Ingresa el nombre" />
 
         <Button Text="Agregar Person"
             Grid.Row="1"
@@ -31,8 +31,12 @@
             Grid.Row="3"
             Clicked="OnGetButtonClicked" />
 
-        <ListView x:Name="AJpeopleList" Grid.Row="4" ItemTapped="OnItemTapped" BackgroundColor="DimGray">
-            <ListView.ItemTemplate>
+
+        <ListView x:Name="AJpeopleList" Grid.Row="4" ItemTapped="OnItemTapped" BackgroundColor="DimGray" 
+                  VerticalOptions="Fill"
+                  HeightRequest="460">
+            
+            <ListView.ItemTemplate >
                 <DataTemplate>
                     <ViewCell>
                         <Grid ColumnDefinitions="*,2*" BackgroundColor="DimGray" Padding="12">
@@ -44,6 +48,37 @@
             </ListView.ItemTemplate>
         </ListView>
 
+        <Frame Grid.Row="5"
+               BackgroundColor="LightSeaGreen"
+               CornerRadius="20"
+               Margin="10"
+               Padding="15"
+               VerticalOptions="End"
+               HeightRequest="100">
+            
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <Image x:Name="AJImagen"
+                       Source="alone.png"
+                       HeightRequest="80"
+                       WidthRequest="80"
+                       Aspect="AspectFill"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start"
+                       Margin="5" />
+                
+                <StackLayout Grid.Column="1"
+                             VerticalOptions="Center"
+                             Spacing="5">
+                    <Label x:Name="AJNombre"
+                           Text="Andres Jimenez"
+                           FontSize="20"
+                           TextColor="White"/>
+                    <Label x:Name="AJEdad"
+                           Text="23 años"
+                           FontSize="16"
+                           TextColor="White"/>
+                </StackLayout>
+            </Grid>
+        </Frame>
     </Grid>
-
 </ContentPage>
