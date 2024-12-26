@@ -1,8 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="People.MainPage">
-    
+             xmlns:vm="clr-namespace:People.ViewModels"
+             x:Class="People.Views.MainPage">
+
+    <ContentPage.BindingContext>
+        <vm:MainPageViewModel />
+    </ContentPage.BindingContext>
+
     <Shell.TitleView>
         <Label Text="AJ_People"
                FontFamily="Rainbow"
@@ -16,26 +21,28 @@
           RowDefinitions="Auto,Auto,Auto,Auto,Auto,*" BackgroundColor="Black">
 
         <Entry x:Name="AJnewPerson"
-           Placeholder="Ingresa el nombre" />
+           Placeholder="Ingresa el nombre"
+           Text="{Binding NewPersonName}" />
 
         <Button Text="Agregar Person"
             Grid.Row="1"
-            Clicked="OnNewButtonClicked" />
+            Command="{Binding AddNewPersonCommand}" />
 
         <Label x:Name="AJstatusMessage"
-           TextColor="{StaticResource White}"
+           TextColor="White"
            FontFamily="Rainbow"
-           Grid.Row="2" />
+           Grid.Row="2"
+           Text="{Binding StatusMessage}" />
 
         <Button Text="Todas Las Personas"
             Grid.Row="3"
-            Clicked="OnGetButtonClicked" />
+            Command="{Binding GetAllPeopleCommand}" />
 
-
-        <ListView x:Name="AJpeopleList" Grid.Row="4" ItemTapped="OnItemTapped" BackgroundColor="DimGray" 
+        <ListView x:Name="AJpeopleList" Grid.Row="4" ItemTapped="OnItemTapped" BackgroundColor="DimGray"
                   VerticalOptions="Fill"
-                  HeightRequest="460">
-            
+                  HeightRequest="460"
+                  ItemsSource="{Binding People}">
+
             <ListView.ItemTemplate >
                 <DataTemplate>
                     <ViewCell>
@@ -55,7 +62,7 @@
                Padding="15"
                VerticalOptions="End"
                HeightRequest="100">
-            
+
             <Grid ColumnDefinitions="Auto,*,Auto">
                 <Image x:Name="AJImagen"
                        Source="alone.png"
@@ -65,7 +72,7 @@
                        VerticalOptions="Center"
                        HorizontalOptions="Start"
                        Margin="5" />
-                
+
                 <StackLayout Grid.Column="1"
                              VerticalOptions="Center"
                              Spacing="5">
