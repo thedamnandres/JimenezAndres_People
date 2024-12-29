@@ -1,6 +1,5 @@
 ﻿using People.Models;
 using SQLite;
-using Font = Microsoft.Maui.Graphics.Font;
 
 namespace People;
 
